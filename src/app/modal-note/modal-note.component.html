@@ -1,0 +1,30 @@
+<!-- Modal -->
+<div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">{{activeNote.id ? "Edit Note" : "New Note"}}</h5>
+        <button type="button" id="closeModalButton" class="btn-close" (click)="onCloseModal('noteModal')" aria-label="Close"></button>
+    </div>
+    <form (submit)="onUpdate(activeNote)">
+        <div class="modal-body">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="titlelabel">Title</span>
+                <input [(ngModel)]="activeNote.title" type="text" class="form-control" name="title">
+            </div>
+            <div *ngIf="noteErrors.titleError" class="alert alert-danger alert-dismissible fade show">
+                <strong>Error!</strong> {{noteErrors.titleError}}
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="descriptionlabel">Description</span>
+                <input [(ngModel)]="activeNote.description" type="text" class="form-control" name="description">
+            </div>
+            <div *ngIf="noteErrors.descriptionError" class="alert alert-danger alert-dismissible fade show">
+                <strong>Error!</strong> {{noteErrors.descriptionError}}
+            </div>
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="onCloseModal('noteModal')">Cancel</button>
+        <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    </form>
+</div>
+

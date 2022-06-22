@@ -1,0 +1,15 @@
+<div class="container">
+
+    <div class="d-flex col-12 col-md-10 col-lg-8 mb-3 justify-content-between">
+        <h3 class="text-primary">Tasks</h3>
+        <button (click)="showModal(null)" class="btn text-primary">
+            <svg class="bi" width="32" height="32" fill="currentColor">
+                <use xlink:href="bootstrap-icons.svg#plus-circle"/>
+             </svg>
+        </button>
+    </div>
+    <app-task *ngFor="let task of tasks" [task]="task" (onShowModalTask)="showModal(task)" (onCloseModalTask)="closeModal('taskModal')" (onMarkAsDoneTask)="markAsDone(task)" (onDeleteTask)="deleteTask(task)"></app-task>
+    <jw-modal id="taskModal">
+        <app-modal-task (onUpdateTask)="updateTask($event)" (onCloseModalTask)="closeModal('taskModal')" [activeTask]="activeTask" [taskErrors]="taskErrors"></app-modal-task>
+    </jw-modal>
+</div>

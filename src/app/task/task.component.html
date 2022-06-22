@@ -1,0 +1,34 @@
+<div class="card mb-3 border-dark shadow col-12 col-md-10 col-lg-8" [ngStyle]="{'background-color': (task.done) ?'#d3d3d3': '#ffffff'}">
+      <div class="d-flex">
+        <div class="card-body">
+          <p class="card-text flex-grow-1">{{task.description}}</p>
+          <div class="d-flex">
+            <p *ngIf="!task.done" class="badge rounded-pill {{priorityColors[task.priority]}}">{{task.priorityName}}</p>
+            <p *ngIf="!task.done && task.duedate" class="ms-2">
+              <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="bootstrap-icons.svg#calendar4-event"/>
+              </svg> {{ task.duedate | date:'dd/MM/yyyy' }} 
+            </p>
+          </div>
+        </div>
+        <div class="btn-group" role="group">
+          <button type="button" (click)="onMarkAsDone(task)" class="btn">
+            <svg class="bi" width="32" height="32" fill="currentColor">
+              <use *ngIf="task.done" xlink:href="bootstrap-icons.svg#toggle-on"/>
+              <use *ngIf="!task.done" xlink:href="bootstrap-icons.svg#toggle-off"/>
+            </svg>
+          </button>
+          <button type="button" class="btn text-primary" (click)="onShowModal(task)">
+            <svg class="bi" width="32" height="32" fill="currentColor">
+              <use xlink:href="bootstrap-icons.svg#pencil"/>
+            </svg>
+          </button>
+          <button type="button" (click)="onDelete(task)" class="btn text-danger">
+            <svg class="bi" width="32" height="32" fill="currentColor">
+              <use xlink:href="bootstrap-icons.svg#trash"/>
+           </svg>
+          </button>
+        </div>
+      </div>
+</div>
+

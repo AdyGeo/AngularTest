@@ -1,0 +1,21 @@
+<div class="card mb-3 border-dark shadow col-12 col-md-10 col-lg-8">
+    <div class="d-flex">
+      <div class="card-body">
+        <p class="card-text h5 flex-grow-1">{{note.title}}</p>
+        <p class="card-text flex-grow-1">{{note.description}}</p>
+      </div>
+      <div class="btn-group" role="group">
+        <button type="button" class="btn text-primary" (click)="onShowModal(note)">
+          <svg class="bi" width="32" height="32" fill="currentColor">
+            <use xlink:href="bootstrap-icons.svg#pencil"/>
+          </svg>
+        </button>
+        <button type="button" class="btn text-danger" (click)="onDelete(note)">
+          <svg class="bi" width="32" height="32" fill="currentColor">
+            <use xlink:href="bootstrap-icons.svg#trash"/>
+         </svg>
+        </button>
+      </div>
+    </div>
+</div>
+

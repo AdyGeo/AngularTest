@@ -1,0 +1,16 @@
+<div class="container">
+
+    <div class="d-flex col-12 col-md-10 col-lg-8 mb-3 justify-content-between">
+            <h3 class="text-primary">Notes</h3>
+        <button  class="btn text-primary" (click)="showModal(null)">
+            <svg class="bi" width="32" height="32" fill="currentColor">
+                <use xlink:href="bootstrap-icons.svg#plus-circle"/>
+             </svg>
+        </button>
+    </div>
+    <app-note *ngFor="let note of notes" [note]="note" (onShowModalNote)="showModal(note)" (onCloseModalTask)="closeModal('noteModal')"  (onDeleteNote)="deleteNote(note)"></app-note>
+    <jw-modal id="noteModal">
+        <app-modal-note (onUpdateNote)="updateNote($event)" (onCloseModalNote)="closeModal('noteModal')" [activeNote]="activeNote" [noteErrors]="noteErrors"></app-modal-note>
+    </jw-modal>
+    
+</div>
